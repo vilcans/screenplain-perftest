@@ -2,6 +2,7 @@
 
 from tempfile import mkdtemp
 import sys
+from time import time
 sys.path.append('screenplain/')
 from screenplain.main import main
 
@@ -22,7 +23,13 @@ def test_to_pdf():
     main([filename, out_dir + '/out.pdf'])
 
 
+def measure(function):
+    start = time()
+    function()
+    seconds = time() - start
+    print function.__name__, seconds
+
 if __name__ == '__main__':
-    test_to_html()
-    test_to_fdx()
-    test_to_pdf()
+    measure(test_to_html)
+    measure(test_to_fdx)
+    measure(test_to_pdf)
