@@ -1,0 +1,3 @@
+[submodule "screenplain"]
+	path = screenplain
+	url = git@github.com:vilcans/screenplain.git
