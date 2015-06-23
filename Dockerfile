@@ -1,7 +1,8 @@
 FROM ubuntu
 
 RUN apt-get update && apt-get install -y build-essential libfreetype6-dev python-dev python-imaging python-pip
-ADD screenplain/requirements.txt /requirements.txt    # Redundant, but improves Docker caching.
+# Redundant, but improves Docker caching.
+ADD screenplain/requirements.txt /
 RUN pip install -r /requirements.txt
 
 ADD . /src
