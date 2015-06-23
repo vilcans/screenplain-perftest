@@ -1,4 +1,4 @@
 {
     "docker_dir": ".",
-    "target_submodule": "redis"
+    "target_submodule": "screenplain"
 }
