@@ -36,7 +36,7 @@ def measure(function):
     start = time()
     try:
         function()
-    except Exception as e:
+    except (Exception, SystemExit) as e:
         print e
         return None
     seconds = time() - start
