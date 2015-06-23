@@ -34,14 +34,19 @@ def measure_all():
 
 def measure(function):
     start = time()
-    function()
+    try:
+        function()
+    except Exception as e:
+        print e
+        return None
     seconds = time() - start
     print function.__name__, seconds
     return seconds
 
 
 def output(results):
-    json_results = [format_result(name, seconds) for name, seconds in results.items()]
+    json_results = [format_result(n, s) for n, s in results.items() if s is not None]
+    assert json_results  # If we have no results at all, that's a fail.
     with open(outfile, 'w') as f:
         json.dump({'results': json_results}, f, indent=4)
 
