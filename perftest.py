@@ -45,16 +45,10 @@ def measure(function):
 
 
 def output(results):
-    json_results = [format_result(n, s) for n, s in results.items() if s is not None]
+    json_results = [{'name': n, 'value': s} for n, s in results.items() if s is not None]
     assert json_results  # If we have no results at all, that's a fail.
     with open(outfile, 'w') as f:
         json.dump({'results': json_results}, f, indent=4)
-
-
-def format_result(name, s):
-    aggregates = {'latency': {'avg': s, 'p90': s, 'p99': s} }
-    return {'name': name,
-            'aggregates': aggregates}
 
 
 if __name__ == '__main__':
