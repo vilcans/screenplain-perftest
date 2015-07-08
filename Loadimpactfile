@@ -1,4 +1,8 @@
-{
-    "docker_dir": ".",
-    "target_submodule": "screenplain"
-}
+mode: python
+target_submodule: screenplain
+install:
+  - apt:
+      pkgs: [libfreetype6-dev, python-imaging]
+  - pip:
+      file: screenplain/requirements.txt
+run: perftest.py
